@@ -19,10 +19,14 @@ struct TVShowsRepository: MediaRepositoryProtocol {
     
     func sync(_ newMedias: [MediaType]) async {
         do {
-            var localMedias = try repository.getAll()
-            updateLocalMedia(with: newMedias, in: &localMedias)
-            repository.create(newMedias)
+            var oldDatas = try repository.getAll()
+
+            let notAlreadySaved = updateLocalMedia(with: newMedias, in: &oldDatas)
             
+            // Create new items in the repository
+            repository.create(notAlreadySaved)
+            
+            // Save changes to the repository
             try repository.save()
         } catch {
             // Log error

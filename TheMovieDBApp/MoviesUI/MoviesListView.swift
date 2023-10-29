@@ -6,13 +6,32 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MoviesListView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    
+    @Environment(\.modelContext) var modelContext
+    @State private var presenter: MoviesListPresenter
+    @Query(sort: \MovieModel.popularity, order: .reverse) private var items: [MovieModel]
+    
+    init(modelContext: ModelContext) {
+        let presenter = MoviesListPresenter(modelContext: modelContext)
+        self._presenter = State(initialValue: presenter)
     }
-}
-
-#Preview {
-    MoviesListView()
+    
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(items) { item in
+                    NavigationLink {
+                        MovieDetailView(movieId: item.id)
+                    } label: {
+                        Text(item.title)
+                    }
+                }
+            }.navigationTitle(String(localized: "moviesTabTitle"))
+        }.task {
+            await presenter.getMovies(page: 1)
+        }
+    }
 }

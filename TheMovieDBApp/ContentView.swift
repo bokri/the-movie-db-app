@@ -9,14 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @Environment(\.modelContext) var modelContext
+    
     var body: some View {
         TabView {
-            MoviesListView()
+            MoviesListView(modelContext: modelContext)
+                .environment(\.modelContext, modelContext)
                 .tabItem {
                     Label(String(localized: "moviesTabTitle"), systemImage: "film")
                 }
             
-            TVShowsView()
+            TVShowsView(modelContext: modelContext)
+                .environment(\.modelContext, modelContext)
                 .tabItem {
                     Label(String(localized: "tvShowsTabTitle"), systemImage: "tv")
                 }
