@@ -17,7 +17,7 @@ extension MovieItem {
                           popularity: popularity,
                           genres: [],
                           originalLanguage: nil,
-                          voteAverage: nil,
+                          voteAverage: voteAverage,
                           voteCount: nil,
                           isFull: false)
     }

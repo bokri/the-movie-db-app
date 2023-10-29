@@ -24,9 +24,10 @@ struct MoviesListView: View {
             List {
                 ForEach(items) { item in
                     NavigationLink {
-                        MovieDetailView(movieId: item.id)
+                        MovieDetailView(movieModel: item, modelContext: modelContext)
+                            .environment(\.modelContext, modelContext)
                     } label: {
-                        Text(item.title)
+                        MovieCell(movie: item)
                     }
                 }
             }.navigationTitle(String(localized: "moviesTabTitle"))

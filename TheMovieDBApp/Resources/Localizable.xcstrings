@@ -1,10 +1,10 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%@" : {
+    "Genres: %@" : {
 
     },
-    "Movie : %lld" : {
+    "Movie Details" : {
 
     },
     "moviesTabTitle" : {
@@ -17,6 +17,15 @@
           }
         }
       }
+    },
+    "Original Language: %@" : {
+
+    },
+    "Release Date: %@" : {
+
+    },
+    "Similar Movies" : {
+
     },
     "TvShow : %lld" : {
 

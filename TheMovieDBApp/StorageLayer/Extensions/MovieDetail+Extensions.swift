@@ -13,7 +13,6 @@ extension MovieDetail {
         model.genres = genres.map({ $0.toData() })
         model.originalLanguage = originalLanguage
         model.voteCount = voteCount
-        model.voteAverage = voteAverage
         model.isFull = true
         return model
     }

@@ -25,7 +25,7 @@ struct TVShowsView: View {
             List {
                 ForEach(items) { item in
                     NavigationLink(destination: TvShowDetailView(tvShowId: item.id)) {
-                        Text("\(item.name)")
+                        TvShowCell(tvShow: item)
                     }
                 }
             }

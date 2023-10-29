@@ -14,6 +14,7 @@ class TVShowItem: Codable {
     let firstAirDate: String
     let posterPath: String
     let popularity: Float
+    let voteAverage: Float
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -22,6 +23,7 @@ class TVShowItem: Codable {
         case firstAirDate = "first_air_date"
         case posterPath = "poster_path"
         case popularity
+        case voteAverage = "vote_average"
     }
     
     required init(from decoder: Decoder) throws {
@@ -32,5 +34,6 @@ class TVShowItem: Codable {
         firstAirDate = try container.decode(String.self, forKey: .firstAirDate)
         posterPath = try container.decode(String.self, forKey: .posterPath)
         popularity = try container.decode(Float.self, forKey: .popularity)
+        voteAverage = try container.decode(Float.self, forKey: .voteAverage)
     }
 }

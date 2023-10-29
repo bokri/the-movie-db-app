@@ -12,13 +12,11 @@ class TVShowDetail: TVShowItem {
     let numberOfSeasons: Int
     let numberOfEpisodes: Int
     let originalLanguage: String
-    let voteAverage: Float
     let voteCount: Int
     
     enum CodingKeys: String, CodingKey {
         case genres
         case originalLanguage = "original_language"
-        case voteAverage = "vote_average"
         case voteCount = "vote_count"
         case numberOfSeasons = "number_of_seasons"
         case numberOfEpisodes = "number_of_episodes"
@@ -29,6 +27,7 @@ class TVShowDetail: TVShowItem {
         case firstAirDate
         case posterPath
         case popularity
+        case voteAverage
     }
     
     required init(from decoder: Decoder) throws {
@@ -37,7 +36,6 @@ class TVShowDetail: TVShowItem {
         numberOfSeasons = try container.decode(Int.self, forKey: .numberOfSeasons)
         numberOfEpisodes = try container.decode(Int.self, forKey: .numberOfEpisodes)
         originalLanguage = try container.decode(String.self, forKey: .originalLanguage)
-        voteAverage = try container.decode(Float.self, forKey: .voteAverage)
         voteCount = try container.decode(Int.self, forKey: .voteCount)
         
         try super.init(from: container.superDecoder())
