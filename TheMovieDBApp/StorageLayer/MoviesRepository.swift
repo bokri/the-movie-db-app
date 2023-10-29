@@ -32,5 +32,4 @@ struct MoviesRepository: MediaRepositoryProtocol {
             // Log error
         }
     }
-
 }

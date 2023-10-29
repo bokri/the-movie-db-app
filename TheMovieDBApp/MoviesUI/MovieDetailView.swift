@@ -10,39 +10,37 @@ import SwiftData
 
 struct MovieDetailView: View {
     
-    private var movie: MovieModel
     @Environment(\.modelContext) var modelContext
     @State private var presenter: MovieDetailPresenter
         
     init(movieModel: MovieModel, modelContext: ModelContext) {
-        self.movie = movieModel
-        self.presenter = MovieDetailPresenter(modelContext: modelContext, movieId: movieModel.id)
+        self.presenter = MovieDetailPresenter(movie: movieModel, modelContext: modelContext)
     }
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 // Movie Poster
-                PosterImageView(imageURL: Constants.imagesBaseUrl + movie.posterPath, width: nil, height: 400)
+                PosterImageView(imageURL: Constants.imagesBaseUrl + presenter.movie.posterPath, width: nil, height: 400)
                         .cornerRadius(10)
 
                 // Movie Title
-                Text(movie.title)
+                Text(presenter.movie.title)
                     .font(.title)
                     .fontWeight(.bold)
 
                 // Movie Overview
-                Text(movie.overview)
+                Text(presenter.movie.overview)
                     .font(.body)
                     .multilineTextAlignment(.leading)
 
                 // Release Date
-                Text("Release Date: \(movie.releaseDate.formatDateString() ?? "")")
+                Text("Release Date: \(presenter.movie.releaseDate.formatDateString())")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
 
                 // Genres
-                Text("Genres: \(movie.genres.map { $0.name }.joined(separator: ", ") ?? "")")
+                Text("Genres: \(presenter.movie.genres.joined(separator: ", "))")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
 
@@ -50,13 +48,13 @@ struct MovieDetailView: View {
                 HStack {
                     Image(systemName: "star.fill")
                         .foregroundColor(.yellow)
-                    Text(String(format: "%.1f", movie.voteAverage ?? 0.0))
+                    Text(String(format: "%.1f", presenter.movie.voteAverage ?? 0.0))
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
 
                 // Original Language
-                if let originalLanguage = movie.originalLanguage {
+                if let originalLanguage = presenter.movie.originalLanguage {
                     Text("Original Language: \(originalLanguage)")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
@@ -85,6 +83,10 @@ struct MovieDetailView: View {
             }
             .padding(16)
         }
-        .navigationBarTitle("Movie Details")
+        .navigationBarTitle(presenter.movie.title)
+        .task {
+            await presenter.getMovieDetail()
+            await presenter.getSimilarMovies()
+        }
     }
 }

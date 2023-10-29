@@ -13,9 +13,6 @@ public enum TheMovieDbAPIEndpoint: APIEndpoint {
     case topMovies(page: Int)
     case movieDetail(id: Int)
     case similarMovies(id: Int)
-    case tvShows(page: Int)
-    case tvShowDetail(id: Int)
-    case similarTvShows(id: Int)
     
     private var path: String {
         return switch self {
@@ -25,12 +22,6 @@ public enum TheMovieDbAPIEndpoint: APIEndpoint {
             "/movie/\(id)"
         case .similarMovies(let id):
             "/movie/\(id)/similar"
-        case .tvShows:
-            "/discover/tv"
-        case .tvShowDetail(let id):
-            "/tv/\(id)"
-        case .similarTvShows(let id):
-            "/tv/\(id)/similar"
         }
     }
     
@@ -44,14 +35,7 @@ public enum TheMovieDbAPIEndpoint: APIEndpoint {
             break
         case .similarMovies:
             break
-        case .tvShows(let page):
-            parameters["page"] = page
-        case .tvShowDetail:
-            break
-        case .similarTvShows:
-            break
         }
-
         parameters["api_key"] = ProcessInfo.processInfo.environment["API_KEY"]
         return parameters
     }

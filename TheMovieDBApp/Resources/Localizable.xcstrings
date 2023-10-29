@@ -4,9 +4,6 @@
     "Genres: %@" : {
 
     },
-    "Movie Details" : {
-
-    },
     "moviesTabTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -26,20 +23,6 @@
     },
     "Similar Movies" : {
 
-    },
-    "TvShow : %lld" : {
-
-    },
-    "tvShowsTabTitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TV Shows"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"

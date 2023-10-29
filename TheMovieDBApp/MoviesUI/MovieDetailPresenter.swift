@@ -14,18 +14,29 @@ class MovieDetailPresenter {
 
     var modelContext: ModelContext
     var moviesRepository: MoviesRepository
-    var movieId: Int
+    var movie: MovieModel
     var similarMovies: [MovieModel] = []
     
-    init(modelContext: ModelContext, movieId: Int) {
+    init(movie: MovieModel, modelContext: ModelContext) {
         self.modelContext = modelContext
         self.moviesRepository = MoviesRepository(context: modelContext)
-        self.movieId = movieId
+        self.movie = movie
+    }
+    
+    func getMovieDetail() async {
+        do {
+            let remoteMovie = try await NetworkManager.shared.fetchData(TheMovieDbAPIEndpoint.movieDetail(id: movie.id), type: MovieDetail.self)
+                .toDetailData()
+                        
+            movie = remoteMovie
+        } catch {
+            // Log error
+        }
     }
     
     func getSimilarMovies() async {
         do {
-            let remoteMovies = try await NetworkManager.shared.fetchData(TheMovieDbAPIEndpoint.similarMovies(id: movieId), type: MoviesList.self)
+            let remoteMovies = try await NetworkManager.shared.fetchData(TheMovieDbAPIEndpoint.similarMovies(id: movie.id), type: MoviesList.self)
                 .toData()
 
             await moviesRepository.sync(remoteMovies)

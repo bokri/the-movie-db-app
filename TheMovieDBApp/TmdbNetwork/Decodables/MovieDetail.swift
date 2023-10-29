@@ -32,6 +32,6 @@ class MovieDetail: MovieItem {
         originalLanguage = try container.decode(String.self, forKey: .originalLanguage)
         voteCount = try container.decode(Int.self, forKey: .voteCount)
         
-        try super.init(from: container.superDecoder())
+        try super.init(from: decoder)
     }
 }

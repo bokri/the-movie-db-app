@@ -10,7 +10,7 @@ import Foundation
 extension MovieDetail {
     func toDetailData() -> MovieModel {
         let model = super.toItemData()
-        model.genres = genres.map({ $0.toData() })
+        model.genres = genres.map({ $0.name })
         model.originalLanguage = originalLanguage
         model.voteCount = voteCount
         model.isFull = true

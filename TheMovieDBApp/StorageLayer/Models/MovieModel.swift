@@ -17,7 +17,7 @@ class MovieModel: Identifiable {
     var releaseDate: String
     var posterPath: String
     var popularity: Float
-    var genres: [MediaGenreModel]
+    var genres: [String]
     var originalLanguage: String?
     var voteAverage: Float?
     var voteCount: Int?
@@ -29,7 +29,7 @@ class MovieModel: Identifiable {
          releaseDate: String,
          posterPath: String,
          popularity: Float,
-         genres: [MediaGenreModel],
+         genres: [String],
          originalLanguage: String?,
          voteAverage: Float?,
          voteCount: Int?,
