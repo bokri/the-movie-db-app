@@ -13,6 +13,7 @@ struct MoviesListView: View {
     @Environment(\.modelContext) var modelContext
     @State private var presenter: MoviesListPresenter
     @Query(sort: \MovieModel.popularity, order: .reverse) private var items: [MovieModel]
+
     
     init(modelContext: ModelContext) {
         let presenter = MoviesListPresenter(modelContext: modelContext)
@@ -29,10 +30,16 @@ struct MoviesListView: View {
                     } label: {
                         MovieCell(movie: item)
                     }
+                    .task {
+                        if item == items.last && !presenter.isLoading {
+                            // Fetch more data when the last cell is visible
+                            await presenter.fetchMoreMovies()
+                        }
+                    }
                 }
             }.navigationTitle(String(localized: "moviesTabTitle"))
         }.task {
-            await presenter.getMovies(page: 1)
+            await presenter.getMovies(page: presenter.currentPage)
         }
     }
 }

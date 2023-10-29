@@ -14,6 +14,8 @@ class MoviesListPresenter {
 
     var modelContext: ModelContext
     var moviesRepository: MoviesRepository
+    var currentPage = 1
+    var isLoading = false
     
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
@@ -22,12 +24,22 @@ class MoviesListPresenter {
     
     func getMovies(page: Int) async {
         do {
-            let remoteMovies = try await NetworkManager.shared.fetchData(TheMovieDbAPIEndpoint.topMovies(page: page), type: MoviesList.self)
-                .toData()
-
+            let remoteMovies = try await NetworkManager.shared.fetchData(TheMovieDbAPIEndpoint.topMovies(page: page), type: MoviesList.self).toData()
+            
             await moviesRepository.sync(remoteMovies)
         } catch {
-            // Log error
+            Logger.error("Error on Getting Movies \(error.localizedDescription)")
+        }
+    }
+    
+    func fetchMoreMovies() async {
+        if currentPage < 500 {
+            isLoading = true
+
+            await getMovies(page: currentPage + 1)
+
+            currentPage += 1
+            isLoading = false
         }
     }
 }

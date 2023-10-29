@@ -70,9 +70,7 @@ struct MovieDetailView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
                             ForEach(presenter.similarMovies) { similarMovie in
-                                NavigationLink(destination: MovieDetailView(movieModel: similarMovie, modelContext: modelContext).environment(\.modelContext, modelContext)) {
-                                    SimilarMovieCard(similarMovie: similarMovie)
-                                }
+                                SimilarMovieCard(similarMovie: similarMovie)
                             }
                         }
                         .padding(16)
