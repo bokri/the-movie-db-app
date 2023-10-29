@@ -18,9 +18,9 @@ class MovieModel: Identifiable {
     var posterPath: String
     var popularity: Float
     var genres: [MediaGenreModel]
-    var originalLanguage: String
-    var voteAverage: Float
-    var voteCount: Int
+    var originalLanguage: String?
+    var voteAverage: Float?
+    var voteCount: Int?
     var isFull: Bool
     
     init(id: Int,
@@ -30,9 +30,9 @@ class MovieModel: Identifiable {
          posterPath: String,
          popularity: Float,
          genres: [MediaGenreModel],
-         originalLanguage: String,
-         voteAverage: Float,
-         voteCount: Int,
+         originalLanguage: String?,
+         voteAverage: Float?,
+         voteCount: Int?,
          isFull: Bool) {
         self.id = id
         self.title = title

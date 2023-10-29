@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            MoviesListView()
+                .tabItem {
+                    Label(String(localized: "moviesTabTitle"), systemImage: "film")
+                }
+            
+            TVShowsView()
+                .tabItem {
+                    Label(String(localized: "tvShowsTabTitle"), systemImage: "tv")
+                }
         }
-        .padding()
     }
 }
 

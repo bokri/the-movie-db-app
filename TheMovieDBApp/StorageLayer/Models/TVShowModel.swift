@@ -18,11 +18,11 @@ class TVShowModel: Identifiable {
     var posterPath: String
     var popularity: Float
     var genres: [MediaGenreModel]
-    var originalLanguage: String
-    var voteAverage: Float
-    var voteCount: Int
-    var numberOfSeasons: Int
-    var numberOfEpisodes: Int
+    var originalLanguage: String?
+    var voteAverage: Float?
+    var voteCount: Int?
+    var numberOfSeasons: Int?
+    var numberOfEpisodes: Int??
     var isFull: Bool
 
     init(id: Int,
@@ -32,11 +32,11 @@ class TVShowModel: Identifiable {
          posterPath: String,
          popularity: Float,
          genres: [MediaGenreModel],
-         originalLanguage: String,
-         voteAverage: Float,
-         voteCount: Int,
-         numberOfSeasons: Int,
-         numberOfEpisodes: Int,
+         originalLanguage: String?,
+         voteAverage: Float?,
+         voteCount: Int?,
+         numberOfSeasons: Int?,
+         numberOfEpisodes: Int?,
          isFull: Bool) {
         self.id = id
         self.name = name
