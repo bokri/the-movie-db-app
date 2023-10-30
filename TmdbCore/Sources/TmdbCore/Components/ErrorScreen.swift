@@ -21,14 +21,16 @@ public struct ErrorScreen: View {
             
             Image(systemName: "exclamationmark.triangle")
                 .font(.system(size: 100))
-                .foregroundColor(.red)
+                .foregroundColor(Color(.errorRed))
+                .padding()
             
-            Text("Oops, an error occurred.")
+            Text(String(localized: "error.title", bundle: Bundle.module))
                 .font(.title)
-                .foregroundColor(.red)
+                .foregroundColor(Color(.errorRed))
+                
             
-            Text("Please try again later.")
-                .foregroundColor(.red)
+            Text(String(localized: "error.subtitle", bundle: Bundle.module))
+                .foregroundColor(Color(.errorRed)) // Use a custom color
             
             Button(action: {
                 Task {
@@ -39,18 +41,19 @@ public struct ErrorScreen: View {
                     }
                 }
             }) {
-                Text("Retry")
+                Text(String(localized: "error.cta", bundle: Bundle.module))
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()
-                    .background(Color.red)
+                    .background(Color(.errorRed))
                     .cornerRadius(10)
-            }
+            }.padding()
             
             Spacer()
         }
         .padding()
     }
+
 }
 
 #Preview {

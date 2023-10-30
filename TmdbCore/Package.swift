@@ -24,6 +24,9 @@ let package = Package(
             name: "TmdbCore",
             dependencies: [
                 .product(name: "Kingfisher", package: "Kingfisher"),
+            ],
+            resources: [
+                .process("Resources"),
             ]
         ),
         .testTarget(
