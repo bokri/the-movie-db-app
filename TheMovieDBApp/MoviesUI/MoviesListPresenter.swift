@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import SwiftData
+import TmdbCore
 
 /**
  A presenter responsible for managing a list of movies and supporting infinite scrolling.

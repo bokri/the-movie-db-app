@@ -28,7 +28,7 @@ import Kingfisher
  For more information on using Kingfisher with SwiftUI and customization options, refer to the Kingfisher documentation.
 
  */
-struct PosterImageView: View {
+public struct PosterImageView: View {
     
     // MARK: - Properties
 
@@ -46,7 +46,7 @@ struct PosterImageView: View {
      - width: The optional maximum width of the image view. If not provided, it defaults to the maximum available width.
      - height: The height of the image view.
      */
-    init(imageURL: String, width: CGFloat? = nil, height: CGFloat) {
+    public init(imageURL: String, width: CGFloat? = nil, height: CGFloat) {
         self.imageURL = imageURL
         self.width = width
         self.height = height
@@ -54,7 +54,7 @@ struct PosterImageView: View {
     
     // MARK: - SwiftUI
     
-    var body: some View {
+    public var body: some View {
         KFImage(URL(string: imageURL))
             .placeholder {
                 ProgressView()

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import TmdbCore
 
 /**
  A SwiftUI view for displaying detailed information about a movie.

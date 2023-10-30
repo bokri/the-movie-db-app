@@ -16,7 +16,7 @@ import Foundation
 
  - Parameter results: An array of `MovieItem` entities representing movies retrieved from a remote data source.
  */
-struct MoviesList: Codable {
+public struct MoviesList: Codable {
     /// An array of `MovieItem` entities representing movies.
-    let results: [MovieItem]
+    public let results: [MovieItem]
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension MoviesList {
+public extension MoviesList {
     /**
      An extension for converting decoded JSON `MoviesList` to `MovieModel` objects.
      

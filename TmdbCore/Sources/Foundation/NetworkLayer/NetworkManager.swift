@@ -14,9 +14,9 @@ import Foundation
  
  - Note: This class is typically used to make network requests, process responses, and decode data from remote APIs. It can handle GET, POST, and PUT requests and provides error handling for network-related issues.
  */
-class NetworkManager {
+public class NetworkManager {
     /// The shared instance of the `NetworkManager class.
-    static let shared = NetworkManager()
+    public static let shared = NetworkManager()
     
     private init() {}
     
@@ -69,7 +69,7 @@ class NetworkManager {
      
      - Throws: An error of type NetworkError if any network-related issue occurs, or other decoding errors.
      */
-    func fetchData<T: Decodable>(_ endpoint: APIEndpoint, type: T.Type) async throws -> T {
+    public func fetchData<T: Decodable>(_ endpoint: APIEndpoint, type: T.Type) async throws -> T {
         guard let urlRequest = makeURLRequest(for: endpoint) else {
             throw NetworkError.badURL
         }

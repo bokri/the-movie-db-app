@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension MovieDetail {
+public extension MovieDetail {
     /**
      Converts a `MovieDetail` instance to a detailed `MovieModel`.
      

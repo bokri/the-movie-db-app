@@ -18,7 +18,7 @@ import Foundation
 
  - Throws: An error if any required properties cannot be decoded.
  */
-struct MediaGenre: Codable {
-    let id: Int
-    let name: String
+public struct MediaGenre: Codable {
+    public let id: Int
+    public let name: String
 }

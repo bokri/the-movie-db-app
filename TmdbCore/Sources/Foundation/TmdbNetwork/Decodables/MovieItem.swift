@@ -23,7 +23,7 @@ import Foundation
 
  - Throws: An error if any required properties cannot be decoded.
  */
-class MovieItem: Codable {
+public class MovieItem: Codable {
     let id: Int
     let title: String
     let overview: String
@@ -32,7 +32,7 @@ class MovieItem: Codable {
     let popularity: Float
     let voteAverage: Float
     
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case id
         case title
         case overview
@@ -42,7 +42,7 @@ class MovieItem: Codable {
         case voteAverage = "vote_average"
     }
     
-    required init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Int.self, forKey: .id)
         title = try container.decode(String.self, forKey: .title)

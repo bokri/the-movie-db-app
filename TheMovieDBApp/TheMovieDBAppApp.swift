@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import TmdbCore
 
 /**
  The main entry point of the The Movie Database (TMDb) SwiftUI app.

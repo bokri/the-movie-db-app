@@ -31,7 +31,7 @@ import SwiftUI
  For more information on using the `SimilarMovieCard` view and its subviews, refer to the relevant parts of the application's code or user interface.
  
  */
-struct SimilarMovieCard: View {
+public struct SimilarMovieCard: View {
     
     // MARK: - Properties
     
@@ -44,13 +44,13 @@ struct SimilarMovieCard: View {
      
      - Parameter similarMovie: The `MovieModel` object representing the similar movie's details to be displayed.
      */
-    init(similarMovie: MovieModel) {
+    public init(similarMovie: MovieModel) {
         self.similarMovie = similarMovie
     }
     
     // MARK: - SwiftUI
     
-    var body: some View {
+    public var body: some View {
         VStack(alignment: .leading) {
             PosterImageView(imageURL: Constants.imagesBaseUrl + similarMovie.posterPath, width: 120, height: 180)
                 .cornerRadius(10)

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import TmdbCore
 
 /**
  A SwiftUI view for displaying a list of movies with the ability to load more.

@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension MovieItem {
+public extension MovieItem {
     /**
      An extension for converting a `MovieItem` instance to a `MovieModel`.
      

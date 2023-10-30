@@ -33,7 +33,7 @@ import SwiftUI
  For more information on using the `MovieCell` view and its subviews, refer to the relevant parts of the application's code or user interface.
 
  */
-struct MovieCell: View {
+public struct MovieCell: View {
     
     // MARK: - Properties
 
@@ -46,13 +46,13 @@ struct MovieCell: View {
      
      - Parameter movie: The `MovieModel` object representing the movie's details to be displayed.
      */
-    init(movie: MovieModel) {
+    public init(movie: MovieModel) {
         self.movie = movie
     }
     
     // MARK: - SwiftUI
     
-    var body: some View {
+    public var body: some View {
         HStack(alignment: .top, spacing: 16) {
             PosterImageView(imageURL: Constants.imagesBaseUrl + movie.posterPath, width: 80, height: 120)
             

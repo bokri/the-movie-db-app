@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import SwiftData
+import TmdbCore
 
 /**
  A presenter responsible for managing detailed movie information and similar movies.

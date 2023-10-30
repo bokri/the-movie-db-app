@@ -48,7 +48,7 @@ import os.log
  - Note: In release mode, logs are not displayed unless custom log destinations are added.
  
  */
-open class Logger {
+public enum Logger {
     private static var destinations: [LogDestination] = [ConsoleDestination()]
 
     private enum Level {
@@ -72,7 +72,7 @@ open class Logger {
         }
     }
 
-    open class func addDestination(_ destination: LogDestination) {
+    public static func addDestination(_ destination: LogDestination) {
         if Logger.destinations.contains(where: { (lhs) -> Bool in
             String(describing: destination) == String(describing: lhs)
         }) {
@@ -85,7 +85,7 @@ open class Logger {
     // MARK: Levels
 
     /// log something which help during debugging (low priority)
-    open class func debug(_ message: String,
+    public static func debug(_ message: String,
                           _ file: String = #fileID,
                           _ function: String = #function,
                           _ line: Int = #line) {
@@ -101,7 +101,7 @@ open class Logger {
     }
 
     /// log something which may cause big trouble soon (high priority)
-    open class func warning(_ message: String,
+    public static func warning(_ message: String,
                             _ file: String = #fileID,
                             _ function: String = #function,
                             _ line: Int = #line) {
@@ -117,7 +117,7 @@ open class Logger {
     }
 
     /// log something which will keep you awake at night (highest priority)
-    open class func error(_ error: Error,
+    public static func error(_ error: Error,
                           _ file: String = #fileID,
                           _ function: String = #function,
                           _ line: Int = #line) {
@@ -126,7 +126,7 @@ open class Logger {
         }
     }
 
-    open class func error(_ errorMessage: String,
+    public static func error(_ errorMessage: String,
                           _ file: String = #fileID,
                           _ function: String = #function,
                           _ line: Int = #line) {
@@ -141,7 +141,7 @@ open class Logger {
     }
 
     /// Format log parameters into a readable String
-    private class func formatString(level: Logger.Level,
+    private static func formatString(level: Logger.Level,
                                     message: String,
                                     file: String,
                                     function: String,

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import TmdbCore
 
 struct ContentView: View {
     

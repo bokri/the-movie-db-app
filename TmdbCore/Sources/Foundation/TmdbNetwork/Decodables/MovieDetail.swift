@@ -29,12 +29,12 @@ import Foundation
  - Throws: An error if any required properties cannot be decoded.
 
  */
-class MovieDetail: MovieItem {
-    let genres: [MediaGenre]
-    let originalLanguage: String
-    let voteCount: Int
+public class MovieDetail: MovieItem {
+    public let genres: [MediaGenre]
+    public let originalLanguage: String
+    public let voteCount: Int
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case genres
         case originalLanguage = "original_language"
         case voteCount = "vote_count"
@@ -48,7 +48,7 @@ class MovieDetail: MovieItem {
         case voteAverage
     }
 
-    required init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         genres = try container.decode([MediaGenre].self, forKey: .genres)
         originalLanguage = try container.decode(String.self, forKey: .originalLanguage)

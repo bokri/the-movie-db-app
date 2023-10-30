@@ -17,8 +17,8 @@ import SwiftData
 
  - Parameter context: A `ModelContext` to handle data access and management.
  */
-struct MoviesRepository: MediaRepositoryProtocol {
-    typealias MediaType = MovieModel
+public struct MoviesRepository: MediaRepositoryProtocol {
+    public typealias MediaType = MovieModel
     
     /// The generic data access object used to interact with the local data store.
     private let repository: GenericDataAccessObject<MovieModel>
@@ -28,7 +28,7 @@ struct MoviesRepository: MediaRepositoryProtocol {
      
      - Parameter context: A `ModelContext` for data access and management.
      */
-    init(context: ModelContext) {
+    public init(context: ModelContext) {
         self.repository = GenericDataAccessObject(context: context)
     }
     
@@ -41,7 +41,7 @@ struct MoviesRepository: MediaRepositoryProtocol {
      
      - Throws: An error if there is an issue with data synchronization or storage.
      */
-    func sync(_ newMedias: [MediaType]) async {
+    public func sync(_ newMedias: [MediaType]) async {
         do {
             // Fetch existing movie data from the local data store
             var oldDatas = try repository.getAll()

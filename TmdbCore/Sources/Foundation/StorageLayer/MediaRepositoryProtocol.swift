@@ -16,7 +16,7 @@ import Foundation
 
  - Note: The associated type `MediaType` should represent the type of media entities this repository deals with.
  */
-protocol MediaRepositoryProtocol {
+public protocol MediaRepositoryProtocol {
     associatedtype MediaType
     
     /**
@@ -46,7 +46,7 @@ protocol MediaRepositoryProtocol {
 
 // MARK: - Default Implementation
 
-extension MediaRepositoryProtocol where MediaType: Identifiable {
+public extension MediaRepositoryProtocol where MediaType: Identifiable {
     func updateLocalMedia(with newMedias: [MediaType], in localMedias: inout [MediaType]) -> [MediaType] {
         // Update oldDatas with new values based on matching IDs
         for (index, oldData) in localMedias.enumerated() {
