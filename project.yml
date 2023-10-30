@@ -1,0 +1,82 @@
+configs:
+  Debug: debug
+  Release: release
+
+configFiles:
+  Debug: TheMovieDBApp/XcConfig/TmdbProject.xcconfig
+  Release: TheMovieDBApp/XcConfig/TmdbProject.xcconfig
+
+name: TheMovieDBApp
+
+options:
+  bundleIdPrefix: com.abokri.TheMovieDBApp
+
+packages:
+  TmdbCore:
+    path: TmdbCore
+
+targetTemplates:
+  BaseApp:
+    configFiles:
+      Debug: TheMovieDBApp/XcConfig/TmdbApp.xcconfig
+      Release: TheMovieDBApp/XcConfig/TmdbApp.xcconfig
+    settings:
+      configs:
+        Debug:
+          ENABLE_BITCODE: NO
+          INFOPLIST_FILE: TheMovieDBApp/Resources/Info.plist
+          MARKETING_VERSION: 1.0
+          CURRENT_PROJECT_VERSION: 1
+          CODE_SIGN_ENTITLEMENTS: TheMovieDBApp/Resources/TheMovieDBApp.entitlements
+        Release:
+          ENABLE_BITCODE: NO
+          INFOPLIST_FILE: TheMovieDBApp/Resources/Info.plist
+          MARKETING_VERSION: 1.0
+          CURRENT_PROJECT_VERSION: 1
+          CODE_SIGN_ENTITLEMENTS: TheMovieDBApp/Resources/TheMovieDBApp.entitlements
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - TheMovieDBApp
+    dependencies:
+      - package: TmdbCore
+
+targets:
+  TheMovieDbApp:
+    templates: [BaseApp]
+    scheme:
+      gatherCoverageData: true
+      coverageTargets:
+        - TheMovieDbApp
+      environmentVariables:
+        - variable: API_KEY
+          value: c9856d0cb57c3f14bf75bdc6c063b8f3
+          isEnabled: true
+    settings:
+      configs:
+        Debug:
+          INFOPLIST_KEY_CFBundleDisplayName: "The Movie DB (Debug)"
+          OTHER_SWIFT_FLAGS: -D PROD
+        Release:
+          INFOPLIST_KEY_CFBundleDisplayName: "The Movie DB"
+          OTHER_SWIFT_FLAGS: -D PROD
+
+  TheMovieDbAppDev:
+    templates: [BaseApp]
+    scheme:
+      gatherCoverageData: true
+      coverageTargets:
+        - TheMovieDbAppDev
+      environmentVariables:
+        - variable: API_KEY
+          value: c9856d0cb57c3f14bf75bdc6c063b8f3
+          isEnabled: true
+    settings:
+      configs:
+        Debug:
+          INFOPLIST_KEY_CFBundleDisplayName: "TMDB Dev (Debug)"
+          OTHER_SWIFT_FLAGS: -D PROD
+        Release:
+          INFOPLIST_KEY_CFBundleDisplayName: "TMDB Dev"
+          OTHER_SWIFT_FLAGS: -D PROD

@@ -22,8 +22,7 @@ struct ContentView: View {
 #Preview {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: MovieModel.self, configurations: config)
-    let modelContext = ModelContext(container)
-    
+
     return ContentView()
         .modelContainer(container)
 }
