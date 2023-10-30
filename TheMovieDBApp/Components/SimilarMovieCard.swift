@@ -75,3 +75,19 @@ struct SimilarMovieCard: View {
         .shadow(radius: 4)
     }
 }
+
+#Preview {
+    let movieModel = MovieModel(id: 1,
+                                title: "Titanic",
+                                overview: "Titanic is a good movie !",
+                                releaseDate: "2001-01-01",
+                                posterPath: "/xi8Iu6qyTfyZVDVy60raIOYJJmk.jpg",
+                                popularity: 10.8,
+                                genres: [],
+                                originalLanguage: nil,
+                                voteAverage: 8.2,
+                                voteCount: nil,
+                                isFull: false)
+    
+    return SimilarMovieCard(similarMovie: movieModel)
+}

@@ -68,3 +68,8 @@ struct PosterImageView: View {
             .cornerRadius(10)
     }
 }
+
+#Preview {
+    let imageUrl = Constants.imagesBaseUrl + "/xi8Iu6qyTfyZVDVy60raIOYJJmk.jpg"
+    return PosterImageView(imageURL: imageUrl, width: 80, height: 120)
+}

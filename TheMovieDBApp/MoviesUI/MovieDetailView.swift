@@ -133,3 +133,24 @@ struct MovieDetailView: View {
         }
     }
 }
+
+#Preview {
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: MovieModel.self, configurations: config)
+    let modelContext = ModelContext(container)
+    
+    let movieModel = MovieModel(id: 1,
+                                title: "Titanic",
+                                overview: "Titanic is a good movie !",
+                                releaseDate: "2001-01-01",
+                                posterPath: "/xi8Iu6qyTfyZVDVy60raIOYJJmk.jpg",
+                                popularity: 10.8,
+                                genres: ["Romance", "Action"],
+                                originalLanguage: "en",
+                                voteAverage: 8.2,
+                                voteCount: 12354,
+                                isFull: true)
+
+    return MovieDetailView(movieModel: movieModel, modelContext: modelContext)
+            .modelContainer(container)
+}

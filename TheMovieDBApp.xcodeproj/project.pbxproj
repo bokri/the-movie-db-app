@@ -122,8 +122,6 @@
 				20F4DAE62AEE7B4A006493CF /* NetworkLayer */,
 				20F4DAD72AEE7601006493CF /* TheMovieDBAppApp.swift */,
 				20F4DAD92AEE7601006493CF /* ContentView.swift */,
-				20F4DADB2AEE7602006493CF /* Assets.xcassets */,
-				20F4DADD2AEE7602006493CF /* TheMovieDBApp.entitlements */,
 				20F4DADE2AEE7602006493CF /* Preview Content */,
 			);
 			path = TheMovieDBApp;
@@ -202,6 +200,8 @@
 		20F4DB192AEEAC8A006493CF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				20F4DADB2AEE7602006493CF /* Assets.xcassets */,
+				20F4DADD2AEE7602006493CF /* TheMovieDBApp.entitlements */,
 				20F4DB1A2AEEACA6006493CF /* Localizable.xcstrings */,
 			);
 			path = Resources;
@@ -478,7 +478,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TheMovieDBApp/TheMovieDBApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TheMovieDBApp/Resources/TheMovieDBApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TheMovieDBApp/Preview Content\"";
@@ -517,7 +517,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TheMovieDBApp/TheMovieDBApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TheMovieDBApp/Resources/TheMovieDBApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TheMovieDBApp/Preview Content\"";
