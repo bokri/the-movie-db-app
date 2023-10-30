@@ -8,6 +8,15 @@
         "revision" : "277f1ab2c6664b19b4a412e32b094b201e2d5757",
         "version" : "7.10.0"
       }
+    },
+    {
+      "identity" : "ohhttpstubs",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AliSoftware/OHHTTPStubs",
+      "state" : {
+        "revision" : "12f19662426d0434d6c330c6974d53e2eb10ecd9",
+        "version" : "9.1.0"
+      }
     }
   ],
   "version" : 2

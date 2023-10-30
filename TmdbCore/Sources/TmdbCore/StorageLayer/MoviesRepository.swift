@@ -15,13 +15,12 @@ import SwiftData
 
  - Note: This repository uses a generic data access object (`GenericDataAccessObject`) to interact with the local data store.
 
- - Parameter context: A `ModelContext` to handle data access and management.
  */
 public struct MoviesRepository: MediaRepositoryProtocol {
     public typealias MediaType = MovieModel
     
     /// The generic data access object used to interact with the local data store.
-    private let repository: GenericDataAccessObject<MovieModel>
+    private let dao: GenericDataAccessObject<MovieModel>
     
     /**
      Initializes a new `MoviesRepository` with the provided model context.
@@ -29,9 +28,13 @@ public struct MoviesRepository: MediaRepositoryProtocol {
      - Parameter context: A `ModelContext` for data access and management.
      */
     public init(context: ModelContext) {
-        self.repository = GenericDataAccessObject(context: context)
+        self.dao = GenericDataAccessObject(context: context)
     }
     
+    internal init(dao: GenericDataAccessObject<MovieModel>) {
+        self.dao = dao
+    }
+
     /**
      Synchronizes new movie data with the local movie repository.
      
@@ -44,16 +47,16 @@ public struct MoviesRepository: MediaRepositoryProtocol {
     public func sync(_ newMedias: [MediaType]) async {
         do {
             // Fetch existing movie data from the local data store
-            var oldDatas = try repository.getAll()
+            var oldDatas = try dao.getAll()
             
             // Update local movie entities with new data and get new, unsaved entities
             let notAlreadySaved = updateLocalMedia(with: newMedias, in: &oldDatas)
             
             // Create new items in the data store
-            repository.create(notAlreadySaved)
+            dao.create(notAlreadySaved)
             
             // Save changes to the local data store
-            try repository.save()
+            try dao.save()
         } catch {
             Logger.error("Error on synchronizing datastore with : \(error.localizedDescription)")
         }

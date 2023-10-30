@@ -14,7 +14,7 @@ import Foundation
  
  - Note: This class is typically used to make network requests, process responses, and decode data from remote APIs. It can handle GET, POST, and PUT requests and provides error handling for network-related issues.
  */
-public class NetworkManager {
+public class NetworkManager: NetworkManagerProtocol {
     /// The shared instance of the `NetworkManager class.
     public static let shared = NetworkManager()
     

@@ -15,6 +15,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/onevcat/Kingfisher", from: Version("7.10.0")),
+        .package(url: "https://github.com/AliSoftware/OHHTTPStubs", from: Version("9.0.0"))
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -27,6 +28,11 @@ let package = Package(
         ),
         .testTarget(
             name: "TmdbCoreTests",
-            dependencies: ["TmdbCore"]),
+            dependencies: ["TmdbCore",
+                           .product(name: "OHHTTPStubsSwift", package: "OHHTTPStubs")
+            ],
+            resources: [
+                .process("Resources")
+            ]),
     ]
 )

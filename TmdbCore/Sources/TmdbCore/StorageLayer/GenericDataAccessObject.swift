@@ -22,7 +22,7 @@ import SwiftData
  # Parameters:
  - `Model`: A type that conforms to the `PersistentModel` protocol, representing a model entity with persistent storage properties.
 */
-struct GenericDataAccessObject<Model: PersistentModel> {
+open class GenericDataAccessObject<Model: PersistentModel> {
     
     // MARK: - Properties
     
@@ -49,7 +49,7 @@ struct GenericDataAccessObject<Model: PersistentModel> {
      
      - Throws: An error if there is an issue with retrieving the data from the data store.
      */
-    func getAll() throws -> [Model] {
+    open func getAll() throws -> [Model] {
         let params = FetchDescriptor<Model>()
         let result = try context.fetch(params)
         return result
@@ -60,7 +60,7 @@ struct GenericDataAccessObject<Model: PersistentModel> {
      
      - Parameter models: An array of model entities to create and insert into the data store.
      */
-    func create(_ models: [Model]) {
+    open func create(_ models: [Model]) {
         for model in models {
             context.insert(model)
         }
@@ -73,7 +73,7 @@ struct GenericDataAccessObject<Model: PersistentModel> {
      
      - Throws: An error if there is an issue with saving the changes to the data store.
      */
-    func save() throws {
+    open func save() throws {
         if context.hasChanges {
             try context.save()
         }
