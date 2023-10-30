@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2017A7142AF0700800B29205 /* TmdbCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2017A7132AF0700800B29205 /* TmdbCore */; };
 		20EE30EF2AF043210079AE36 /* TmdbCore in Frameworks */ = {isa = PBXBuildFile; productRef = 20EE30EE2AF043210079AE36 /* TmdbCore */; };
 		20F4DAD82AEE7601006493CF /* TheMovieDBAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F4DAD72AEE7601006493CF /* TheMovieDBAppApp.swift */; };
 		20F4DADA2AEE7601006493CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F4DAD92AEE7601006493CF /* ContentView.swift */; };
@@ -38,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2017A7142AF0700800B29205 /* TmdbCore in Frameworks */,
 				20EE30EF2AF043210079AE36 /* TmdbCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,6 +122,7 @@
 			name = TheMovieDBApp;
 			packageProductDependencies = (
 				20EE30EE2AF043210079AE36 /* TmdbCore */,
+				2017A7132AF0700800B29205 /* TmdbCore */,
 			);
 			productName = TheMovieDBApp;
 			productReference = 20F4DAD42AEE7601006493CF /* TheMovieDBApp.app */;
@@ -150,7 +153,7 @@
 			);
 			mainGroup = 20F4DACB2AEE7601006493CF;
 			packageReferences = (
-				20EE30ED2AF043210079AE36 /* XCLocalSwiftPackageReference "TmdbCore" */,
+				2017A7122AF0700800B29205 /* XCLocalSwiftPackageReference "TmdbCore" */,
 			);
 			productRefGroup = 20F4DAD52AEE7601006493CF /* Products */;
 			projectDirPath = "";
@@ -315,7 +318,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TheMovieDBApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 5KNK9S79RU;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -355,7 +358,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TheMovieDBApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 5KNK9S79RU;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -409,13 +412,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		20EE30ED2AF043210079AE36 /* XCLocalSwiftPackageReference "TmdbCore" */ = {
+		2017A7122AF0700800B29205 /* XCLocalSwiftPackageReference "TmdbCore" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = TmdbCore;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2017A7132AF0700800B29205 /* TmdbCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TmdbCore;
+		};
 		20EE30EE2AF043210079AE36 /* TmdbCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TmdbCore;
