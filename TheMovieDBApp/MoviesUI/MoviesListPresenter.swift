@@ -46,6 +46,7 @@ class MoviesListPresenter {
     var moviesRepository: MoviesRepository
     var currentPage = 1
     var isLoading = false
+    var isOnError = false
     
     // MARK: - Constructors
     
@@ -83,8 +84,10 @@ class MoviesListPresenter {
             let remoteMovies = try await NetworkManager.shared.fetchData(TheMovieDbAPIEndpoint.topMovies(page: page), type: MoviesList.self).toData()
             
             await moviesRepository.sync(remoteMovies)
+            isOnError = false
         } catch {
             Logger.error("Error on Getting Movies \(error.localizedDescription)")
+            isOnError = true
         }
     }
     
