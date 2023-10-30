@@ -8,6 +8,13 @@
 import Foundation
 
 extension MovieDetail {
+    /**
+     Converts a `MovieDetail` instance to a detailed `MovieModel`.
+     
+     This method takes an instance of `MovieDetail` and transforms it into a more detailed `MovieModel`. It maps properties such as genres, original language, and vote count from the `MovieDetail` to the `MovieModel`. Additionally, it sets the `isFull` property to `true` to indicate a complete model.
+     
+     - Returns: A detailed `MovieModel` instance with enhanced movie information.
+     */
     func toDetailData() -> MovieModel {
         let model = super.toItemData()
         model.genres = genres.map({ $0.name })

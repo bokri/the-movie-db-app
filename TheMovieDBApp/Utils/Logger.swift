@@ -8,6 +8,46 @@
 import Foundation
 import os.log
 
+/**
+ A versatile logging utility that allows you to log messages with different levels of severity, send logs to various destinations, and customize log appearance.
+ 
+ `Logger` provides a convenient way to log messages during development and debugging. It supports different log levels, including debug, warning, and error, and allows you to specify custom log destinations.
+ 
+ # Example Usage:
+ 
+ Logger.debug("This is a debug message.")
+ Logger.warning("This is a warning message.")
+ Logger.error("This is an error message.")
+ 
+ 
+ - Important: By default, logs are only displayed in the console in DEBUG mode. You can add custom log destinations to extend log handling, such as saving logs to a file or sending logs to a remote server.
+ 
+ # Custom Log Destinations:
+ - To add a custom log destination, create a class that conforms to `LogDestination` and implement its methods for each log level.
+ - Use `Logger.addDestination(_:)` to add a custom destination to the logger.
+ 
+ # Logging Levels:
+ - `debug`: For low-priority messages that help during debugging.
+ - `warning`: For messages that may indicate potential issues.
+ - `error`: For critical messages that require immediate attention.
+ 
+ # See Also:
+ - `LogDestination`: A protocol for custom log destinations.
+ - `ConsoleDestination`: A built-in log destination for logging to the console.
+ 
+ # Example:
+ 
+ // Add a custom log destination (e.g., to save logs to a file)
+ let fileLogger = FileLogDestination()
+ Logger.addDestination(fileLogger)
+ 
+ Logger.debug("This message goes to the console and the file.")
+ 
+ For more information on custom log destinations, log formatting, and usage, refer to the documentation or the README file.
+ 
+ - Note: In release mode, logs are not displayed unless custom log destinations are added.
+ 
+ */
 open class Logger {
     private static var destinations: [LogDestination] = [ConsoleDestination()]
 
