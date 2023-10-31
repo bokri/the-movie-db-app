@@ -30,13 +30,13 @@ To set up the project, follow these steps:
 1. Clone this repository:
 
    ```sh
-   git clone https://github.com/your-username/the-moviedb-app.git
+   git clone https://github.com/bokri/the-movie-db-app.git
    ```
 
 2. Navigate to the project directory:
 
    ```sh
-   cd the-moviedb-app
+   cd the-movie-db-app
    ```
 
 3. Generate the Xcode project using XcodeGen:
