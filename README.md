@@ -50,10 +50,10 @@ Now you have your Xcode project ready for development!
 
 ## Screenshots
 
-![Screenshot 1](screenshots/screenshot-1.png)
-![Screenshot 2](screenshots/screenshot-2.png)
-![Screenshot 3](screenshots/screenshot-3.png)
-![Screenshot 4](screenshots/screenshot-4.png)
+<img src="screenshots/screenshot-1.png" width="200" height="400" />
+<img src="screenshots/screenshot-2.png" width="200" height="400" />
+<img src="screenshots/screenshot-3.png" width="200" height="400" />
+<img src="screenshots/screenshot-4.png" width="200" height="400" />
 
 ## Unit Tests
 
