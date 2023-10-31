@@ -3,7 +3,7 @@
 Welcome to TheMovieDBApp, an amazing application for all your movie information needs! It's designed with ❤️ and brings the latest in movie information right to your fingertips. This app also features a local database created with SwiftData for a seamless offline experience.
 
 [![Swift](https://img.shields.io/badge/Swift-5.9-orange.svg?style=flat)](https://swift.org)
-[![License](https://img.shields.io/github/license/bokri/the-moviedb-app)](LICENSE.md)
+[![License](https://img.shields.io/github/license/bokri/the-movie-db-app)](LICENSE.md)
 
 ## Table of Contents
 
