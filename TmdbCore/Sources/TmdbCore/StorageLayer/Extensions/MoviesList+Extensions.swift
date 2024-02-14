@@ -13,9 +13,15 @@ public extension MoviesList {
      
      - Returns: An array of `MovieModel` objects or an empty array.
      */
-    func toData() -> [MovieModel] {
+    func toData() -> [MovieDbModel] {
         return results.map { item in
             item.toItemData()
         }
+    }
+}
+
+public extension Array where Element == MovieItem {
+    func toData() -> [MovieDbModel] {
+        return self.map({ $0.toItemData() })
     }
 }

@@ -1,19 +1,16 @@
 //
-//  Movie.swift
-//  TheMovieDBApp
+//  MovieEntity.swift
+//  
 //
-//  Created by Aymen Bokri on 29/10/2023.
+//  Created by Aymen Bokri on 14/02/2024.
 //
 
 import Foundation
-import SwiftData
 
-@Model
-public class MovieModel: Identifiable {
-    
+public class MovieEntity: Identifiable, Equatable {
+
     // MARK: - Properties
-
-    @Attribute(.unique)
+    
     public var id: Int
     public var title: String
     public var overview: String
@@ -50,5 +47,11 @@ public class MovieModel: Identifiable {
         self.voteAverage = voteAverage
         self.voteCount = voteCount
         self.isFull = isFull
+    }
+    
+    // MARK: - Equatable
+    
+    public static func == (lhs: MovieEntity, rhs: MovieEntity) -> Bool {
+        lhs.id == rhs.id && lhs.isFull == rhs.isFull
     }
 }

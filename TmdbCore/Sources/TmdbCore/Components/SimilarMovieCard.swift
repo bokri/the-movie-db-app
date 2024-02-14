@@ -15,7 +15,7 @@ import SwiftUI
  
  
  # Parameters:
- - `similarMovie`: The `MovieModel` object representing the details of the similar movie to be displayed.
+ - `similarMovie`: The `MovieEntity` object representing the details of the similar movie to be displayed.
  
  # Subviews:
  The `SimilarMovieCard` view contains the following subviews:
@@ -24,7 +24,7 @@ import SwiftUI
  - `HStack`: For displaying the vote average with a star icon.
  
  # See Also:
- - `MovieModel`: The data model representing movie details.
+ - `MovieEntity`: The data model representing movie details.
  - `PosterImageView`: A custom view for displaying movie posters.
  - `Constants`: A utility enum containing application constants.
  
@@ -35,7 +35,7 @@ public struct SimilarMovieCard: View {
     
     // MARK: - Properties
     
-    let similarMovie: MovieModel
+    let similarMovie: MovieEntity
     
     // MARK: - Constructors
     
@@ -44,7 +44,7 @@ public struct SimilarMovieCard: View {
      
      - Parameter similarMovie: The `MovieModel` object representing the similar movie's details to be displayed.
      */
-    public init(similarMovie: MovieModel) {
+    public init(similarMovie: MovieEntity) {
         self.similarMovie = similarMovie
     }
     
@@ -58,7 +58,7 @@ public struct SimilarMovieCard: View {
             Text(similarMovie.title)
                 .font(.headline)
                 .fontWeight(.bold)
-                .lineLimit(2)
+                .lineLimit(1)
             
             HStack {
                 Image(systemName: "star.fill")
@@ -74,20 +74,4 @@ public struct SimilarMovieCard: View {
         .cornerRadius(10)
         .shadow(radius: 4)
     }
-}
-
-#Preview {
-    let movieModel = MovieModel(id: 1,
-                                title: "Titanic",
-                                overview: "Titanic is a good movie !",
-                                releaseDate: "2001-01-01",
-                                posterPath: "/xi8Iu6qyTfyZVDVy60raIOYJJmk.jpg",
-                                popularity: 10.8,
-                                genres: [],
-                                originalLanguage: nil,
-                                voteAverage: 8.2,
-                                voteCount: nil,
-                                isFull: false)
-    
-    return SimilarMovieCard(similarMovie: movieModel)
 }

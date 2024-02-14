@@ -11,18 +11,13 @@ import TmdbCore
 
 struct ContentView: View {
     
-    @Environment(\.modelContext) var modelContext
+    private var moviesManager: MoviesManagerProtocol
+    
+    init() {
+        moviesManager = try! MoviesManager()
+    }
     
     var body: some View {
-        MoviesListView(modelContext: modelContext)
-            .environment(\.modelContext, modelContext)
+        MoviesListView(moviesManager: moviesManager)
     }
-}
-
-#Preview {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: MovieModel.self, configurations: config)
-
-    return ContentView()
-        .modelContainer(container)
 }

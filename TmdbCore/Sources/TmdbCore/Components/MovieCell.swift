@@ -15,7 +15,7 @@ import SwiftUI
  
  
  # Parameters:
- - `movie`: The `MovieModel` object representing the movie's details to be displayed.
+ - `movie`: The `MovieEntity` object representing the movie's details to be displayed.
 
  # Subviews:
  The `MovieCell` view contains the following subviews:
@@ -26,7 +26,7 @@ import SwiftUI
  - `HStack`: For displaying the vote average with a star icon.
 
  # See Also:
- - `MovieModel`: The data model representing a movie's details.
+ - `MovieEntity`: The data model representing a movie's details.
  - `PosterImageView`: A custom view for displaying movie posters.
  - `Constants`: A utility enum containing application constants.
 
@@ -37,7 +37,7 @@ public struct MovieCell: View {
     
     // MARK: - Properties
 
-    let movie: MovieModel
+    let movie: MovieEntity
     
     // MARK: - Constructors
     
@@ -46,7 +46,7 @@ public struct MovieCell: View {
      
      - Parameter movie: The `MovieModel` object representing the movie's details to be displayed.
      */
-    public init(movie: MovieModel) {
+    public init(movie: MovieEntity) {
         self.movie = movie
     }
     
@@ -89,20 +89,4 @@ public struct MovieCell: View {
         }
         .padding(12)
     }
-}
-
-#Preview {
-    let movieModel = MovieModel(id: 1,
-                                title: "Titanic",
-                                overview: "Titanic is a good movie !",
-                                releaseDate: "2001-01-01",
-                                posterPath: "/xi8Iu6qyTfyZVDVy60raIOYJJmk.jpg",
-                                popularity: 10.8,
-                                genres: [],
-                                originalLanguage: nil,
-                                voteAverage: 8.2,
-                                voteCount: nil,
-                                isFull: false)
-
-    return MovieCell(movie: movieModel)
 }

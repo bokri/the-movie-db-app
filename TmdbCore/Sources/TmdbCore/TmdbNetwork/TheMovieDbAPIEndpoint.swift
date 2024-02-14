@@ -27,6 +27,8 @@ public enum TheMovieDbAPIEndpoint: APIEndpoint {
     /// Represents an endpoint for fetching similar movies for a given movie.
     case similarMovies(id: Int)
     
+    case searchMovies(text: String)
+    
     /// The path specific to each API endpoint.
     private var path: String {
         return switch self {
@@ -36,6 +38,8 @@ public enum TheMovieDbAPIEndpoint: APIEndpoint {
             "/movie/\(id)"
         case .similarMovies(let id):
             "/movie/\(id)/similar"
+        case .searchMovies(let text):
+            "/search/movie"
         }
     }
     
@@ -50,6 +54,8 @@ public enum TheMovieDbAPIEndpoint: APIEndpoint {
             break
         case .similarMovies:
             break
+        case .searchMovies(let text):
+            parameters["query"] = text
         }
         parameters["api_key"] = ProcessInfo.processInfo.environment["API_KEY"]
         return parameters

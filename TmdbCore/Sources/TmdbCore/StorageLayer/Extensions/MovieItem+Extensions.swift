@@ -15,17 +15,20 @@ public extension MovieItem {
      
      - Returns: A `MovieModel` instance representing the same movie information with optional properties set to default values.
      */
-    func toItemData() -> MovieModel {
-        return MovieModel(id: id,
-                          title: title,
-                          overview: overview,
-                          releaseDate: releaseDate,
-                          posterPath: posterPath,
-                          popularity: popularity,
-                          genres: [],
-                          originalLanguage: nil,
-                          voteAverage: voteAverage,
-                          voteCount: nil,
-                          isFull: false)
+    func toItemData() -> MovieDbModel {
+        let movieDb = MovieDbModel()
+        movieDb.setupProperties(
+            id: id,
+            title: title,
+            overview: overview,
+            releaseDate: releaseDate,
+            posterPath: posterPath,
+            popularity: popularity,
+            genres: [],
+            originalLanguage: nil,
+            voteAverage: voteAverage,
+            voteCount: nil,
+            isFull: false)
+        return movieDb
     }
 }

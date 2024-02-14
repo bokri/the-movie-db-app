@@ -9,43 +9,10 @@ import SwiftUI
 import SwiftData
 import TmdbCore
 
-/**
- A SwiftUI view for displaying detailed information about a movie.
- 
- The `MovieDetailView` struct is a SwiftUI view designed to display comprehensive information about a movie. It includes details such as the movie poster, title, overview, release date, genres, vote average, original language, and a list of similar movies.
- 
- # Parameters:
- - `movieModel`: The `MovieModel` object representing the movie for which details are to be displayed.
- - `modelContext`: The `ModelContext` object for managing data in the app.
- 
- # Subviews:
- The `MovieDetailView` view contains the following subviews:
- - `PosterImageView`: For displaying the movie's poster image.
- - `Text`: For displaying the movie's title, overview, release date, genres, and other information.
- - `HStack`: For displaying the star icon and vote average.
- - `ScrollView`: For enabling scrolling of the content.
- - `SimilarMovieCard`: A custom view for displaying similar movies in a horizontal list layout.
- 
- # Functionality:
- The `MovieDetailView` provides the following functionality:
- - Displaying detailed information about a movie, including poster, title, overview, release date, genres, and more.
- - Loading similar movies in a horizontal list layout if available.
- - Automatically fetching detailed movie information and similar movies on view presentation.
- 
- # See Also:
- - `MovieModel`: The data model representing movie details.
- - `PosterImageView`: A view for displaying movie posters with optional caching.
- - `SimilarMovieCard`: A custom view for displaying information about similar movies.
- - `MovieDetailPresenter`: The presenter responsible for managing detailed movie information.
- 
- For more information on using the `MovieDetailView` and its subviews, refer to the relevant parts of the application's code or user interface.
- 
- */
 struct MovieDetailView: View {
     
     // MARK: - Properties
     
-    @Environment(\.modelContext) var modelContext
     @State private var presenter: MovieDetailPresenter
     
     // MARK: - Constructors
@@ -57,8 +24,8 @@ struct MovieDetailView: View {
      - movieModel: The `MovieModel` object representing the movie for which details are to be displayed.
      - modelContext: The `ModelContext` object for managing data in the app.
      */
-    init(movieModel: MovieModel, modelContext: ModelContext) {
-        self.presenter = MovieDetailPresenter(movie: movieModel, modelContext: modelContext)
+    init(movieModel: MovieEntity, moviesManager: MoviesManagerProtocol) {
+        self.presenter = MovieDetailPresenter(movie: movieModel, moviesManager: moviesManager)
     }
     
     // MARK: - SwiftUI
@@ -133,25 +100,4 @@ struct MovieDetailView: View {
             await presenter.getSimilarMovies()
         }
     }
-}
-
-#Preview {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: MovieModel.self, configurations: config)
-    let modelContext = ModelContext(container)
-    
-    let movieModel = MovieModel(id: 1,
-                                title: "Titanic",
-                                overview: "Titanic is a good movie !",
-                                releaseDate: "2001-01-01",
-                                posterPath: "/xi8Iu6qyTfyZVDVy60raIOYJJmk.jpg",
-                                popularity: 10.8,
-                                genres: ["Romance", "Action"],
-                                originalLanguage: "en",
-                                voteAverage: 8.2,
-                                voteCount: 12354,
-                                isFull: true)
-
-    return MovieDetailView(movieModel: movieModel, modelContext: modelContext)
-            .modelContainer(container)
 }

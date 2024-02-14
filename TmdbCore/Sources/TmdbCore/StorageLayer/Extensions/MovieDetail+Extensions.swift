@@ -15,9 +15,9 @@ public extension MovieDetail {
      
      - Returns: A detailed `MovieModel` instance with enhanced movie information.
      */
-    func toDetailData() -> MovieModel {
+    func toDetailData() -> MovieDbModel {
         let model = super.toItemData()
-        model.genres = genres.map({ $0.name })
+        model.genres.append(objectsIn: genres.map({ $0.name }))
         model.originalLanguage = originalLanguage
         model.voteCount = voteCount
         model.isFull = true

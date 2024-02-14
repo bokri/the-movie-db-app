@@ -42,6 +42,17 @@
         }
       }
     },
+    "search.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search Movies"
+          }
+        }
+      }
+    },
     "Similar Movies" : {
       "localizations" : {
         "en" : {

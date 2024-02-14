@@ -19,28 +19,12 @@ import TmdbCore
 @main
 struct TheMovieDBAppApp: App {
     
-    // MARK: - Properties
-    
-    /// A shared ModelContainer for managing persistent data storage.
-    var sharedModelContainer: ModelContainer = {
-        let schemas = Schema([
-            MovieModel.self
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schemas, isStoredInMemoryOnly: false)
-        
-        do {
-            return try ModelContainer(for: schemas, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-    
     // MARK: - SwiftUI
 
     /// The entry point for defining the app's main scene.
     var body: some Scene {
         WindowGroup {
             ContentView()
-        }.modelContainer(sharedModelContainer)
+        }
     }
 }

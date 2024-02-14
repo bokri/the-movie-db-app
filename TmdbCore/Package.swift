@@ -15,6 +15,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/onevcat/Kingfisher", from: Version("7.10.0")),
+        .package(url: "https://github.com/realm/realm-swift.git", from: Version("10.47.0")),
         .package(url: "https://github.com/AliSoftware/OHHTTPStubs", from: Version("9.0.0"))
     ],
     targets: [
@@ -24,6 +25,8 @@ let package = Package(
             name: "TmdbCore",
             dependencies: [
                 .product(name: "Kingfisher", package: "Kingfisher"),
+                .product(name: "Realm", package: "realm-swift"),
+                .product(name: "RealmSwift", package: "realm-swift"),
             ],
             resources: [
                 .process("Resources"),

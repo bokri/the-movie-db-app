@@ -10,55 +10,25 @@ import SwiftUI
 import SwiftData
 import TmdbCore
 
-/**
- A presenter responsible for managing a list of movies and supporting infinite scrolling.
- 
- The `MoviesListPresenter` class is responsible for coordinating the retrieval of a list of movies and enabling infinite scrolling to fetch more movies as needed. It interacts with the data layer and serves as an intermediary for updating the UI with movie data.
- 
- # Parameters:
- - `modelContext`: The `ModelContext` object for managing data in the app.
- 
- # Properties:
- - `currentPage`: The current page number for fetching movies.
- - `isLoading`: A flag indicating whether the presenter is currently fetching data.
- 
- # Functionality:
- The `MoviesListPresenter` provides the following functionality:
- - Retrieving a list of movies from a remote data source.
- - Supporting infinite scrolling by fetching additional pages of movies.
- - Synchronizing data with the `MoviesRepository` to ensure consistency with the local database.
- 
- # See Also:
- - `MoviesRepository`: A repository for managing movie data in the app.
- - `TheMovieDbAPIEndpoint`: An endpoint for making API requests to The Movie Database (TMDb).
- - `NetworkManager`: A manager for handling network requests.
- - `Logger`: A logging utility for error handling.
- 
- For more information on using the `MoviesListPresenter`, refer to the relevant parts of the application's code or user interface.
- 
- */
+
 @Observable
 class MoviesListPresenter {
     
     // MARK: - Properties
     
-    var modelContext: ModelContext
-    var moviesRepository: MoviesRepository
+    var moviesManager: MoviesManagerProtocol
     var currentPage = 1
     var isLoading = false
     var isOnError = false
     
+    var searchText: String = ""
+    var searchIsActive: Bool = false
+    var searchMovies: [MovieEntity] = []
+    
     // MARK: - Constructors
     
-    /**
-     Initializes a `MoviesListPresenter` with the provided `ModelContext`.
-     
-     - Parameters:
-     - modelContext: The `ModelContext` object for managing data in the app.
-     */
-    init(modelContext: ModelContext) {
-        self.modelContext = modelContext
-        self.moviesRepository = MoviesRepository(context: modelContext)
+    init(moviesManager: MoviesManagerProtocol) {
+        self.moviesManager = moviesManager
     }
     
     // MARK: - Methods
@@ -81,13 +51,24 @@ class MoviesListPresenter {
      */
     func getMovies(page: Int) async {
         do {
-            let remoteMovies = try await NetworkManager.shared.fetchData(TheMovieDbAPIEndpoint.topMovies(page: page), type: MoviesList.self).toData()
-            
-            await moviesRepository.sync(remoteMovies)
+            try await moviesManager.fetchTopMovies(page: page)
             isOnError = false
         } catch {
             Logger.error("Error on Getting Movies \(error.localizedDescription)")
             isOnError = true
+        }
+    }
+    
+    func emptySearchMovies() {
+        searchMovies = []
+    }
+    
+    func searchMovies() async {
+        do {
+            searchMovies = try await moviesManager.searchMovies(text: searchText)
+        } catch {
+            searchMovies = []
+            Logger.error("Error on Getting Movies \(error.localizedDescription)")
         }
     }
     
