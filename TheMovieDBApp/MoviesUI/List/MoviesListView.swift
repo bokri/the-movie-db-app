@@ -62,12 +62,11 @@ struct MoviesListView: View {
             // Present the search screen using a sheet
             SearchView(moviesManager: presenter.moviesManager, isPresented: $presenter.isSearchActive)
         }
-        
         .task {
             await presenter.getMovies(page: presenter.currentPage)
         }
     }
-    
+
     var moviesList: some View {
         List {
             ForEach(dbMovieItems) { item in

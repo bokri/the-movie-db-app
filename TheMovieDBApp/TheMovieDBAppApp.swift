@@ -17,7 +17,7 @@ import TmdbCore
  - Note: This structure initializes a `ModelContainer` for managing persistent data storage using the SwiftData framework, including the schemas and model configurations required for storing and retrieving data related to the app's movie listings.
 */
 @main
-struct TheMovieDBAppApp: App {
+struct TheMovieDBApp: App {
     
     // MARK: - SwiftUI
 
