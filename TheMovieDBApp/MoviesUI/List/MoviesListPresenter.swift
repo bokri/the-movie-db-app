@@ -10,7 +10,6 @@ import SwiftUI
 import SwiftData
 import TmdbCore
 
-
 @Observable
 class MoviesListPresenter {
     
@@ -20,10 +19,7 @@ class MoviesListPresenter {
     var currentPage = 1
     var isLoading = false
     var isOnError = false
-    
-    var searchText: String = ""
-    var searchIsActive: Bool = false
-    var searchMovies: [MovieEntity] = []
+    var isSearchActive = false
     
     // MARK: - Constructors
     
@@ -56,19 +52,6 @@ class MoviesListPresenter {
         } catch {
             Logger.error("Error on Getting Movies \(error.localizedDescription)")
             isOnError = true
-        }
-    }
-    
-    func emptySearchMovies() {
-        searchMovies = []
-    }
-    
-    func searchMovies() async {
-        do {
-            searchMovies = try await moviesManager.searchMovies(text: searchText)
-        } catch {
-            searchMovies = []
-            Logger.error("Error on Getting Movies \(error.localizedDescription)")
         }
     }
     

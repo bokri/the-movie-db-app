@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "btn.close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        }
+      }
+    },
     "Genres: %@" : {
       "localizations" : {
         "en" : {
@@ -44,6 +54,16 @@
     },
     "search.placeholder" : {
       "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search Movies"
+          }
+        }
+      }
+    },
+    "searchTabTitle" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {

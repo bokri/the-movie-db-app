@@ -14,7 +14,7 @@ struct ContentView: View {
     private var moviesManager: MoviesManagerProtocol
     
     init() {
-        moviesManager = try! MoviesManager()
+        moviesManager = MoviesManager()
     }
     
     var body: some View {

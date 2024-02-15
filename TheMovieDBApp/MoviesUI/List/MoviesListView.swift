@@ -34,40 +34,35 @@ struct MoviesListView: View {
     var body: some View {
         NavigationView {
             Group {
-                if presenter.searchIsActive == false {
-                    if dbMovieItems.isEmpty && presenter.isOnError == false {
-                        // Display a loading indicator
-                        ProgressView()
-                    } else if presenter.isOnError {
-                        // Display the error screen
-                        ErrorScreen() {
-                            // Retry button action
-                            await presenter.getMovies(page: presenter.currentPage)
-                        }
-                    } else {
-                        moviesList
+                if dbMovieItems.isEmpty && presenter.isOnError == false {
+                    // Display a loading indicator
+                    ProgressView()
+                } else if presenter.isOnError {
+                    // Display the error screen
+                    ErrorScreen() {
+                        // Retry button action
+                        await presenter.getMovies(page: presenter.currentPage)
                     }
                 } else {
-                    searchList
+                    moviesList
                 }
-            }.navigationTitle(String(localized: "moviesTabTitle"))
+            }
+            .navigationTitle(String(localized: "moviesTabTitle"))
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        presenter.isSearchActive = true
+                    }, label: {
+                        Image(systemName: "magnifyingglass")
+                    })
+                }
+            })
         }
-        .searchable(text: $presenter.searchText, isPresented: $presenter.searchIsActive)
-        .onChange(of: presenter.searchIsActive, { oldValue, newValue in
-            if !newValue {
-                presenter.emptySearchMovies()
-            }
-        })
-        .onChange(of: presenter.searchText, { oldValue, newValue in
-            if newValue.isEmpty {
-                presenter.emptySearchMovies()
-            }
-        })
-        .onSubmit(of: .search) {
-            Task {
-                await presenter.searchMovies()
-            }
+        .sheet(isPresented: $presenter.isSearchActive) {
+            // Present the search screen using a sheet
+            SearchView(moviesManager: presenter.moviesManager, isPresented: $presenter.isSearchActive)
         }
+        
         .task {
             await presenter.getMovies(page: presenter.currentPage)
         }
@@ -87,14 +82,6 @@ struct MoviesListView: View {
                         await presenter.fetchMoreMovies()
                     }
                 }
-            }
-        }
-    }
-    
-    var searchList: some View {
-        List {
-            ForEach(presenter.searchMovies) { item in
-                MovieCell(movie: item)
             }
         }
     }
