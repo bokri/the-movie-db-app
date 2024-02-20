@@ -7,21 +7,21 @@
 
 import Foundation
 
-public class MovieEntity: Identifiable, Equatable {
+public struct MovieEntity: Identifiable, Equatable {
 
     // MARK: - Properties
     
-    public var id: Int
-    public var title: String
-    public var overview: String
-    public var releaseDate: String
-    public var posterPath: String
-    public var popularity: Float
-    public var genres: [String]
-    public var originalLanguage: String?
-    public var voteAverage: Float?
-    public var voteCount: Int?
-    public var isFull: Bool
+    public let id: Int
+    public let title: String
+    public let overview: String
+    public let releaseDate: String
+    public let posterPath: String
+    public let popularity: Float
+    public let genres: [String]
+    public let originalLanguage: String?
+    public let voteAverage: Float?
+    public let voteCount: Int?
+    public let isFull: Bool
     
     // MARK: - Constructors
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol MoviesManagerProtocol {
+public protocol MoviesServiceProtocol {
     func fetchTopMovies(page: Int) async throws
     func getMovieDetail(id: Int) async throws -> MovieEntity?
     func getSimilarMovies(to id: Int) async throws -> [MovieEntity]

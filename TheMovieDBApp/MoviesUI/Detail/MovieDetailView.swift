@@ -17,15 +17,8 @@ struct MovieDetailView: View {
     
     // MARK: - Constructors
     
-    /**
-     Initializes a `MovieDetailView` with the provided `MovieModel` and `ModelContext`.
-     
-     - Parameters:
-     - movieModel: The `MovieModel` object representing the movie for which details are to be displayed.
-     - modelContext: The `ModelContext` object for managing data in the app.
-     */
-    init(movieModel: MovieEntity, moviesManager: MoviesManagerProtocol) {
-        self.presenter = MovieDetailPresenter(movie: movieModel, moviesManager: moviesManager)
+    init(movie: MovieEntity, moviesService: MoviesServiceProtocol) {
+        self.presenter = MovieDetailPresenter(movie: movie, moviesService: moviesService)
     }
     
     // MARK: - SwiftUI

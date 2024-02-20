@@ -8,29 +8,6 @@
 import Foundation
 import SwiftUI
 
-/**
- A SwiftUI view for displaying information about a similar movie in a card layout.
- 
- The `SimilarMovieCard` struct is a SwiftUI view designed for displaying information about a movie similar to the main movie, presented in a card-like layout. It includes the similar movie's poster, title, and vote average.
- 
- 
- # Parameters:
- - `similarMovie`: The `MovieEntity` object representing the details of the similar movie to be displayed.
- 
- # Subviews:
- The `SimilarMovieCard` view contains the following subviews:
- - `PosterImageView`: For displaying the similar movie's poster.
- - `Text`: For displaying the similar movie's title.
- - `HStack`: For displaying the vote average with a star icon.
- 
- # See Also:
- - `MovieEntity`: The data model representing movie details.
- - `PosterImageView`: A custom view for displaying movie posters.
- - `Constants`: A utility enum containing application constants.
- 
- For more information on using the `SimilarMovieCard` view and its subviews, refer to the relevant parts of the application's code or user interface.
- 
- */
 public struct SimilarMovieCard: View {
     
     // MARK: - Properties

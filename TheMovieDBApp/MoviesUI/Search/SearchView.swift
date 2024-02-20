@@ -19,13 +19,8 @@ struct SearchView: View {
     
     // MARK: - Constructors
     
-    /**
-     Initializes a `MoviesListView` with the provided `ModelContext`.
-     
-     - Parameter modelContext: The `ModelContext` object for managing data in the app.
-     */
-    init(moviesManager: MoviesManagerProtocol, isPresented: Binding<Bool>) {
-        let presenter = SearchPresenter(moviesManager: moviesManager)
+    init(moviesService: MoviesServiceProtocol, isPresented: Binding<Bool>) {
+        let presenter = SearchPresenter(moviesService: moviesService)
         self._presenter = State(initialValue: presenter)
         self._isPresented = isPresented
     }
@@ -56,7 +51,7 @@ struct SearchView: View {
         List {
             ForEach(presenter.searchMovies) { item in
                 NavigationLink {
-                    MovieDetailView(movieModel: item, moviesManager: presenter.moviesManager)
+                    MovieDetailView(movie: item, moviesService: presenter.moviesService)
                 } label: {
                     MovieCell(movie: item)
                 }

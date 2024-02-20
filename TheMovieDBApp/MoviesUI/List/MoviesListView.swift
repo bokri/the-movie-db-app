@@ -24,8 +24,8 @@ struct MoviesListView: View {
      
      - Parameter modelContext: The `ModelContext` object for managing data in the app.
      */
-    init(moviesManager: MoviesManagerProtocol) {
-        let presenter = MoviesListPresenter(moviesManager: moviesManager)
+    init(moviesService: MoviesServiceProtocol) {
+        let presenter = MoviesListPresenter(moviesService: moviesService)
         self._presenter = State(initialValue: presenter)
     }
     
@@ -34,14 +34,16 @@ struct MoviesListView: View {
     var body: some View {
         NavigationView {
             Group {
-                if dbMovieItems.isEmpty && presenter.isOnError == false {
-                    // Display a loading indicator
-                    ProgressView()
-                } else if presenter.isOnError {
-                    // Display the error screen
-                    ErrorScreen() {
-                        // Retry button action
-                        await presenter.getMovies(page: presenter.currentPage)
+                if dbMovieItems.isEmpty {
+                    if presenter.isOnError {
+                        // Display the error screen
+                        ErrorScreen() {
+                            // Retry button action
+                            await presenter.getMovies(page: presenter.currentPage)
+                        }
+                    } else {
+                        // Display a loading indicator
+                        ProgressView()
                     }
                 } else {
                     moviesList
@@ -60,7 +62,7 @@ struct MoviesListView: View {
         }
         .sheet(isPresented: $presenter.isSearchActive) {
             // Present the search screen using a sheet
-            SearchView(moviesManager: presenter.moviesManager, isPresented: $presenter.isSearchActive)
+            SearchView(moviesService: presenter.moviesService, isPresented: $presenter.isSearchActive)
         }
         .task {
             await presenter.getMovies(page: presenter.currentPage)
@@ -71,7 +73,7 @@ struct MoviesListView: View {
         List {
             ForEach(dbMovieItems) { item in
                 NavigationLink {
-                    MovieDetailView(movieModel: item, moviesManager: presenter.moviesManager)
+                    MovieDetailView(movie: item, moviesService: presenter.moviesService)
                 } label: {
                     MovieCell(movie: item)
                 }

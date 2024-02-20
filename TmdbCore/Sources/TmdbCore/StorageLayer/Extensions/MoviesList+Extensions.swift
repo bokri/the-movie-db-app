@@ -8,11 +8,7 @@
 import Foundation
 
 public extension MoviesList {
-    /**
-     An extension for converting decoded JSON `MoviesList` to `MovieModel` objects.
-     
-     - Returns: An array of `MovieModel` objects or an empty array.
-     */
+    
     func toData() -> [MovieDbModel] {
         return results.map { item in
             item.toItemData()

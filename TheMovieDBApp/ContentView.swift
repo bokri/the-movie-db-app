@@ -11,13 +11,13 @@ import TmdbCore
 
 struct ContentView: View {
     
-    private var moviesManager: MoviesManagerProtocol
+    private var moviesService: MoviesServiceProtocol
     
     init() {
-        moviesManager = MoviesManager()
+        moviesService = MoviesService()
     }
     
     var body: some View {
-        MoviesListView(moviesManager: moviesManager)
+        MoviesListView(moviesService: moviesService)
     }
 }

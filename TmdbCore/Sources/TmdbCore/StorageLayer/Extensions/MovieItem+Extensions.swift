@@ -8,13 +8,7 @@
 import Foundation
 
 public extension MovieItem {
-    /**
-     An extension for converting a `MovieItem` instance to a `MovieModel`.
-     
-     This extension provides a method to convert a `MovieItem` instance into a `MovieModel` instance. It allows for easy transformation of data between related model classes in the application.
-     
-     - Returns: A `MovieModel` instance representing the same movie information with optional properties set to default values.
-     */
+
     func toItemData() -> MovieDbModel {
         let movieDb = MovieDbModel()
         movieDb.setupProperties(

@@ -38,7 +38,7 @@ public enum TheMovieDbAPIEndpoint: APIEndpoint {
             "/movie/\(id)"
         case .similarMovies(let id):
             "/movie/\(id)/similar"
-        case .searchMovies(let text):
+        case .searchMovies:
             "/search/movie"
         }
     }

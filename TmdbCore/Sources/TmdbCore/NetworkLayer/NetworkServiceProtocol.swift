@@ -7,6 +7,6 @@
 
 import Foundation
 
-public protocol NetworkManagerProtocol {
+public protocol NetworkServiceProtocol {
     func fetchData<T: Decodable>(_ endpoint: APIEndpoint, type: T.Type) async throws -> T
 }

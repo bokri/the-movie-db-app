@@ -1,5 +1,5 @@
 //
-//  NetworkManager.swift
+//  NetworkService.swift
 //  TheMovieDBApp
 //
 //  Created by Aymen Bokri on 29/10/2023.
@@ -7,16 +7,8 @@
 
 import Foundation
 
-/**
- A manager for performing network operations and handling data retrieval from API endpoints.
- 
- The `NetworkManager` class provides a central point for managing network requests and data retrieval operations. It supports asynchronous fetching of data from various API endpoints using different HTTP methods and provides a mechanism for handling network errors and decoding retrieved data into Swift model types.
- 
- - Note: This class is typically used to make network requests, process responses, and decode data from remote APIs. It can handle GET, POST, and PUT requests and provides error handling for network-related issues.
- */
-public class NetworkManager: NetworkManagerProtocol {
-    /// The shared instance of the `NetworkManager class.
-    public static let shared = NetworkManager()
+public class NetworkService: NetworkServiceProtocol {
+    public static let shared = NetworkService()
     
     private init() {}
     
