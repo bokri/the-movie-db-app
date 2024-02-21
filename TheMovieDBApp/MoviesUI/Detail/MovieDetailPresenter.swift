@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftData
 import TmdbCore
 
 @Observable
@@ -20,7 +19,6 @@ class MovieDetailPresenter {
     var similarMovies: [MovieEntity] = []
     
     // MARK: - Constructors
-    
 
     init(movie: MovieEntity, moviesService: MoviesServiceProtocol) {
         self.moviesService = moviesService

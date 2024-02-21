@@ -14,4 +14,3 @@ final class DateExtensionTests: XCTestCase {
         XCTAssertEqual(formattedString, expectedFormattedString)
     }
 }
-

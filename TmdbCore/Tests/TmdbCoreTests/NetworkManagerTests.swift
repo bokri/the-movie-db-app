@@ -37,7 +37,7 @@ class NetworkManagerTests: XCTestCase {
         
         // Act: Fetch movies using the NetworkManager
         do {
-            let movies: MoviesList = try await NetworkMService.shared.fetchData(TheMovieDbAPIEndpoint.topMovies(page: 1), type: MoviesList.self)
+            let movies: MoviesList = try await NetworkService.shared.fetchData(TheMovieDbAPIEndpoint.topMovies(page: 1), type: MoviesList.self)
             
             
             // Assert: Verify the results
@@ -71,7 +71,7 @@ class NetworkManagerTests: XCTestCase {
         
         // Act: Fetch movies using the NetworkManager
         do {
-            let movieDetail: MovieDetail = try await NetworkMService.shared.fetchData(TheMovieDbAPIEndpoint.movieDetail(id: 500), type: MovieDetail.self)
+            let movieDetail: MovieDetail = try await NetworkService.shared.fetchData(TheMovieDbAPIEndpoint.movieDetail(id: 500), type: MovieDetail.self)
             
             
             XCTAssertEqual(movieDetail.id, 500, "Incorrect movie ID")
