@@ -1,6 +1,6 @@
 # TheMovieDBApp
 
-Welcome to TheMovieDBApp, an amazing application for all your movie information needs! It's designed with ❤️ and brings the latest in movie information right to your fingertips. This app also features a local database created with SwiftData for a seamless offline experience.
+Welcome to TheMovieDBApp, an amazing application for all your movie information needs! It's designed with ❤️ and brings the latest in movie information right to your fingertips. This app also features a local database created with Realm DB for a seamless offline experience.
 
 [![Swift](https://img.shields.io/badge/Swift-5.9-orange.svg?style=flat)](https://swift.org)
 [![License](https://img.shields.io/github/license/bokri/the-movie-db-app)](LICENSE.md)
@@ -65,7 +65,7 @@ Please refer to the TmdbCore package for details on running and configuring the 
 
 TheMovieDBApp uses the following dependencies:
 
-- [Kingfisher](https://github.com/onevcat/Kingfisher) for efficient image caching and loading.
+- [Nuke](https://github.com/kean/NukeUI) for efficient image caching and loading.
 - [OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs) for API request stubbing during unit testing.
 
 ## License
