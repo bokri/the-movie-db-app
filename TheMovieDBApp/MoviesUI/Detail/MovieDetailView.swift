@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftData
 import TmdbCore
 
 struct MovieDetailView: View {
@@ -27,8 +26,10 @@ struct MovieDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 // Movie Poster
-                PosterImageView(imageURL: Constants.imagesBaseUrl + presenter.movie.posterPath, width: nil, height: 400)
-                    .cornerRadius(10)
+                PosterImageView(imageURL: Constants.imagesBaseUrl + presenter.movie.posterPath,
+                                width: UIScreen.main.bounds.width,
+                                height: 400)
+                .cornerRadius(10)
                 
                 // Movie Title
                 Text(presenter.movie.title)

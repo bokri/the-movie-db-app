@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Kingfisher
+import NukeUI
 
 /**
  A SwiftUI view for displaying an image from a given URL with Kingfisher integration.
@@ -21,7 +21,7 @@ import Kingfisher
  - `height`: The height of the image view.
 
  # See Also:
- - `KFImage`: Kingfisher's SwiftUI view for image loading.
+ - `LazyImage`: NukeUI's SwiftUI view for image loading.
  - `ProgressView`: A SwiftUI view for showing loading progress.
  - `Logger`: A logging utility for handling errors or issues.
 
@@ -55,15 +55,16 @@ public struct PosterImageView: View {
     // MARK: - SwiftUI
     
     public var body: some View {
-        KFImage(URL(string: imageURL))
-            .placeholder {
-                ProgressView()
-            }
-            .resizable()
-            .onSuccess { _ in }
-            .onFailure { error in
-                Logger.warning("Image download failed with error: \(error)")
-            }
+        LazyImage(request: ImageRequest(url: URL(string: imageURL), processors: [.resize(height: height)]))
+            .onCompletion({ result in
+                switch result {
+                case .failure(let error):
+                    Logger.warning("Image download failed with error: \(error)")
+                default:
+                    break
+                }
+            })
+            .aspectRatio(contentMode: .fit)
             .frame(maxWidth: width ?? .infinity, maxHeight: height)
             .cornerRadius(10)
     }
